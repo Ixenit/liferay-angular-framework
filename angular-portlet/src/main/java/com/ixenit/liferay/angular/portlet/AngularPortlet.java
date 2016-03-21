@@ -13,6 +13,7 @@ import com.ixenit.liferay.angular.portlet.annotation.ResourceMethod;
 import com.ixenit.liferay.angular.portlet.annotation.ResourceParam;
 import com.ixenit.liferay.angular.portlet.annotation.ResourcePermissions;
 import com.ixenit.liferay.angular.portlet.exception.AngularPortletException;
+import com.ixenit.liferay.angular.portlet.exception.NoSuchResourceMethodException;
 import com.ixenit.liferay.angular.portlet.locale.L10nUtil;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
@@ -265,7 +266,7 @@ public abstract class AngularPortlet extends MVCPortlet {
 			String message = "No matching resource method found for ID: " + resourceId + " in class "
 					+ getClass().getCanonicalName();
 
-			throw new IllegalArgumentException(message);
+			throw new NoSuchResourceMethodException(message);
 		}
 
 		return method.get();
